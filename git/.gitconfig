@@ -1,0 +1,52 @@
+[user]
+	name = Alex Burkowsky
+    	email = aburkowsky9@gmail.com
+  
+[core]
+    	editor = vim # Use your preferred editor here
+ 
+[color]
+    	branch = auto
+    	decorate = auto
+    	diff = auto
+    	grep = auto
+    	interactive = auto
+   	log = auto
+    	showbranch = auto
+    	status = auto
+    	ui = auto
+ 
+[diff]
+    	algorithm = patience
+    	autoRefreshIndex = true
+    	indentHeuristic = true
+    	mnemonicprefix = true
+    	renames = true
+ 
+[fetch]
+    	recurseSubmodules = true
+ 
+[grep]
+    	extendedRegexp = true
+ 
+[merge]
+    	ff = true
+    	conflictstyle = diff3
+    	verbosity = 3
+
+[alias]
+    	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    	# shows each changed file with each log commit
+    	lg = log --stat --color	
+    	s = status
+    	co = checkout
+   	br = branch
+    	pushu = push -u origin HEAD
+    	listalias = config --get-regexp alias
+
+[pull]
+   	rebase = false
+
+[init]
+   	defaultBranch = main
+
