@@ -117,5 +117,7 @@ export SBT_OPTS="-XX:MaxMetaspaceSize=1g -Xmx2024m -Xss2m" #fix for various out 
 
 # Startup
 nodeVersion="$(node --version)"
+npmVersion="$(npm --version)"
 echo "Hello, Alex"
 echo "Using Node Version:" "${nodeVersion}"
+echo "Using NPM Version: " "${npmVersion}"
