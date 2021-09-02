@@ -1,8 +1,16 @@
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=${PATH}:~/.npm-global/bin
-export PATH=${PATH}:./node_modules/.bin
+# Set default $PATH to a variable
+export DEFAULT_PATH=$PATH
+
+# 1st in $PATH should be location of homebrew's bin & sbin
+export PATH=/usr/local/bin:/usr/local/sbin
+# 2nd include desired python instance in path
+export PATH=${PATH}:/usr/local/opt/python/libexec/bin
+# 3rd add back default path
+export PATH=${PATH}:${DEFAULT_PATH}
+# Last add local node_modules to path followed by global node_modules
+export PATH=${PATH}:./node_modules/.bin:~/.npm-global/bin
 
 #JAVA
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
@@ -116,6 +124,7 @@ ulimit -S -n 4096 #fix for SBT can sometimes reach MacOS's maximum file handle l
 export SBT_OPTS="-XX:MaxMetaspaceSize=1g -Xmx2024m -Xss2m" #fix for various out of memory errors using sbt
 
 # Startup
+MY_INFRA_PATH=~/coding/infrastructure
 nodeVersion="$(node --version)"
 npmVersion="$(npm --version)"
 echo "Hello, Alex"

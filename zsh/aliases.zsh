@@ -15,7 +15,8 @@ alias nginx-conf="vim /usr/local/etc/nginx/nginx.conf"
 alias curl-head="curl -I -X GET"
 
 # Repo Shortcuts
-
+alias frontend="code ~/coding/frontend"
+alias infra="code ~/coding/infrastructure"
 
 #IntelliJ Debugging
 alias enable_debug='export SBT_OPTS="-Xms512m -Xmx2048M -XX:MaxMetaspaceSize=512m -XX:NewRatio=2 -XX:+UseParallelGC -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"'

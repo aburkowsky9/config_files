@@ -39,3 +39,4 @@ nodeVersion="$(node --version)"
 echo "Hello, Alex"
 echo "Using Node Version:" "${nodeVersion}"
 source ~/bin/check-git
+. "$HOME/.cargo/env"
