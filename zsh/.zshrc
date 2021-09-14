@@ -12,8 +12,9 @@ export PATH=${PATH}:${DEFAULT_PATH}
 # Last add local node_modules to path followed by global node_modules
 export PATH=${PATH}:./node_modules/.bin:~/.npm-global/bin
 
-#JAVA
+# JAVA
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/alexburkowsky/.oh-my-zsh"
 
@@ -22,6 +23,8 @@ export NVM_DIR=~/.nvm
  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 export NVM_LAZY_LOAD=true
+
+# export GIT_TRACE=1
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -87,10 +90,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-nvm colored-man-pages)
+plugins=(zsh-nvm zsh_reload jsontools copyfile)
 
 source $ZSH/oh-my-zsh.sh
-
+# set ZSH_AUTOSUGGEST_MANUAL_REBIND
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
