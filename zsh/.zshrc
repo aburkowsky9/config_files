@@ -1,3 +1,5 @@
+# Profiling zsh plugins
+# zmodload zsh/zprof
 
 # If you come from bash you might have to change your $PATH.
 # Set default $PATH to a variable
@@ -30,7 +32,8 @@ export NVM_LAZY_LOAD=true
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="cypher"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -90,10 +93,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-nvm zsh_reload jsontools copyfile)
+plugins=(zsh-nvm jsontools copyfile zsh-autosuggestions)  
 
 source $ZSH/oh-my-zsh.sh
-# set ZSH_AUTOSUGGEST_MANUAL_REBIND
+set ZSH_AUTOSUGGEST_MANUAL_REBIND
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"

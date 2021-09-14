@@ -1,6 +1,7 @@
 #zsh
 alias zshconfig="vim ~/.zshrc"
 alias zshalias="vim ~/.oh-my-zsh/custom/aliases.zsh"
+alias reload="exec zsh"
 
 #commands
 alias mv='mv -i'
@@ -13,6 +14,7 @@ alias delbrs='git for-each-ref --format "%(refname:short)" refs/heads | grep -v 
 alias hsh='HUSKY_SKIP_HOOKS=1'
 alias nginx-conf="vim /usr/local/etc/nginx/nginx.conf"
 alias curl-head="curl -I -X GET"
+alias gitconfig="vim ~/.gitconfig"
 
 # Repo Shortcuts
 alias frontend="code ~/coding/frontend"
