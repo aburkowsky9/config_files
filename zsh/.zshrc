@@ -143,7 +143,7 @@ COLOR_GIT='%F{39}'
 COLOR_GREEN='%F{green}'
 
 setopt PROMPT_SUBST
-export PROMPT='${COLOR_HOSTNAME}%m ${COLOR_WHITE}:: ${COLOR_DIR}%~ ${COLOR_GIT}$(parse_git_branch)${COLOR_GREEN}» %'
+export PROMPT='${COLOR_HOSTNAME}%m ${COLOR_GREEN}:: ${COLOR_DIR}%~ ${COLOR_GIT}$(parse_git_branch)${COLOR_WHITE}» %'
 
 # Startup
 MY_INFRA_PATH=~/coding/infrastructure
