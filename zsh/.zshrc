@@ -26,6 +26,7 @@ export NVM_DIR=~/.nvm
 
 export NVM_LAZY_LOAD=true
 
+# Debug git slowness
 # export GIT_TRACE=1
 
 # Set name of the theme to load --- if set to "random", it will
@@ -33,7 +34,8 @@ export NVM_LAZY_LOAD=true
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="cypher"
+# Turn off themes in favor prompt set below
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -93,7 +95,7 @@ ZSH_THEME="cypher"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-nvm jsontools copyfile zsh-autosuggestions)  
+plugins=(zsh-nvm jsontools copyfile zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 set ZSH_AUTOSUGGEST_MANUAL_REBIND
@@ -128,6 +130,17 @@ code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 # SBT
 ulimit -S -n 4096 #fix for SBT can sometimes reach MacOS's maximum file handle limit
 export SBT_OPTS="-XX:MaxMetaspaceSize=1g -Xmx2024m -Xss2m" #fix for various out of memory errors using sbt
+
+# Shell Prompt
+parse_git_branch() {
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+}
+
+COLOR_HOSTNAME='%F{243}'
+COLOR_DIR='%F{197}'
+COLOR_GIT='%F{39}'
+setopt PROMPT_SUBST
+export PROMPT='${COLOR_HOSTNAME}%m %{${fg_bold[white]}%}:: ${COLOR_DIR}%~ ${COLOR_GIT}$(parse_git_branch)%{${fg[green]}%}» '
 
 # Startup
 MY_INFRA_PATH=~/coding/infrastructure
