@@ -15,6 +15,8 @@ alias hsh='HUSKY_SKIP_HOOKS=1'
 alias nginx-conf="vim /usr/local/etc/nginx/nginx.conf"
 alias curl-head="curl -I -X GET"
 alias gitconfig="vim ~/.gitconfig"
+alias sleep_off="sudo pmset -c sleep 0"
+alias sleep_on="sudo pmset -c sleep 1"
 
 # Repo Shortcuts
 alias frontend="code ~/coding/frontend"
