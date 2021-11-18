@@ -11,7 +11,7 @@ alias df='df -h'
 alias du='du -h'
 alias mkdir='mkdir -p'
 alias delbrs='git for-each-ref --format "%(refname:short)" refs/heads | grep -v "main\|master" | xargs git branch -D'
-alias hsh='HUSKY_SKIP_HOOKS=1'
+alias hsh='HUSKY=0'
 alias nginx-conf="vim /usr/local/etc/nginx/nginx.conf"
 alias curl-head="curl -I -X GET"
 alias gitconfig="vim ~/.gitconfig"

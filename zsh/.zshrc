@@ -99,6 +99,9 @@ plugins=(zsh-nvm jsontools copyfile zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 set ZSH_AUTOSUGGEST_MANUAL_REBIND
+ZSH_AUTOSUGGEST_COMPLETION_IGNORE="gti *"
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="gti *"
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -145,6 +148,9 @@ NEWLINE=$'\n'
 
 setopt PROMPT_SUBST
 export PROMPT='${COLOR_HOSTNAME}%m ${COLOR_GREEN}:: ${COLOR_DIR}%~ ${COLOR_GIT}$(parse_git_branch)${NEWLINE}${COLOR_WHITE}» %'
+
+# replace with desired environment
+export VAULT_ADDR=https://vault.preprod.polysign.io
 
 # Startup
 MY_INFRA_PATH=~/coding/infrastructure
