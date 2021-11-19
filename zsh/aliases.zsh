@@ -17,6 +17,7 @@ alias curl-head="curl -I -X GET"
 alias gitconfig="vim ~/.gitconfig"
 alias sleep_off="sudo pmset -c sleep 0"
 alias sleep_on="sudo pmset -c sleep 1"
+alias get_permissions="stat -f '%A %a %N'"
 
 # Repo Shortcuts
 alias frontend="code ~/coding/frontend"
