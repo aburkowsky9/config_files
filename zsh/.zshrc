@@ -5,17 +5,27 @@
 # Set default $PATH to a variable
 export DEFAULT_PATH=$PATH
 
-# 1st in $PATH should be location of homebrew's bin & sbin
-export PATH=/usr/local/bin:/usr/local/sbin
-# 2nd include desired python instance in path
-export PATH=${PATH}:/usr/local/opt/python/libexec/bin
-# 3rd add back default path
+# 1st in $PATH should be homebrew's java followed by location of homebrew's bin & sbin
+export PATH=/usr/local/opt/openjdk/bin:/usr/local/bin:/usr/local/sbin
+
+# Include desired python instance in path - add back in if pyenv removed
+# export PATH=${PATH}:/usr/local/opt/python/libexec/bin
+
+# Add pipenv packages
+export PATH=${PATH}:~/.local/bin
+
+# Add back default path by appending to tail
 export PATH=${PATH}:${DEFAULT_PATH}
-# Last add local node_modules to path followed by global node_modules
+
+# Next add personal scripts to path
+export PATH=${PATH}:~/coding/scripts
+
+# LAST add local node_modules to path followed by global node_modules
 export PATH=${PATH}:./node_modules/.bin:~/.npm-global/bin
 
+
 # JAVA
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/alexburkowsky/.oh-my-zsh"
@@ -147,7 +157,7 @@ COLOR_GREEN='%F{green}'
 NEWLINE=$'\n'
 
 setopt PROMPT_SUBST
-export PROMPT='${COLOR_HOSTNAME}%m ${COLOR_GREEN}:: ${COLOR_DIR}%~ ${COLOR_GIT}$(parse_git_branch)${NEWLINE}${COLOR_WHITE}» %'
+export PROMPT='${COLOR_HOSTNAME}%m ${COLOR_GREEN}:: ${COLOR_DIR}%~ ${COLOR_GIT}$(parse_git_branch)${NEWLINE}${COLOR_WHITE}» '
 
 # replace with desired environment
 export VAULT_ADDR=https://vault.preprod.polysign.io
@@ -156,6 +166,13 @@ export VAULT_ADDR=https://vault.preprod.polysign.io
 MY_INFRA_PATH=~/coding/infrastructure
 nodeVersion="$(node --version)"
 npmVersion="$(npm --version)"
+eval "$(ssh-agent -s)" > /dev/null
+
 echo "Hello, Alex"
 echo "Using Node Version:" "${nodeVersion}"
 echo "Using NPM Version: " "${npmVersion}"
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+echo "Using Python Version: $(python --version)"

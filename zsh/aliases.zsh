@@ -2,6 +2,7 @@
 alias zshconfig="vim ~/.zshrc"
 alias zshalias="vim ~/.oh-my-zsh/custom/aliases.zsh"
 alias reload="exec zsh"
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 #commands
 alias mv='mv -i'
@@ -18,6 +19,9 @@ alias gitconfig="vim ~/.gitconfig"
 alias sleep_off="sudo pmset -c sleep 0"
 alias sleep_on="sudo pmset -c sleep 1"
 alias get_permissions="stat -f '%A %a %N'"
+#alias docker_rm_all="docker rm $(docker ps -aq)"
+#alias docker_rmi_all="docker rmi $(docker images -q)"
+alias start_docker="open -a Docker"
 
 # Repo Shortcuts
 alias frontend="code ~/coding/frontend"
