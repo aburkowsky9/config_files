@@ -1,5 +1,5 @@
-# Profiling zsh plugins
-# zmodload zsh/zprof
+# Profiling zsh plugins - Start of File
+#zmodload zsh/zprof
 
 # If you come from bash you might have to change your $PATH.
 # Set default $PATH to a variable
@@ -20,9 +20,14 @@ export PATH=${PATH}:${DEFAULT_PATH}
 # Next add personal scripts to path
 export PATH=${PATH}:~/coding/scripts
 
+# Add golang to path
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH:$GOROOT/bin
+
 # LAST add local node_modules to path followed by global node_modules
 export PATH=${PATH}:./node_modules/.bin:~/.npm-global/bin
-
 
 # JAVA
 export JAVA_HOME=$(/usr/libexec/java_home)
@@ -138,7 +143,7 @@ fi
 
 
 # Add VS code CLI
-code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$*" ;}
 
 # SBT
 ulimit -S -n 4096 #fix for SBT can sometimes reach MacOS's maximum file handle limit
@@ -157,22 +162,26 @@ COLOR_GREEN='%F{green}'
 NEWLINE=$'\n'
 
 setopt PROMPT_SUBST
-export PROMPT='${COLOR_HOSTNAME}%m ${COLOR_GREEN}:: ${COLOR_DIR}%~ ${COLOR_GIT}$(parse_git_branch)${NEWLINE}${COLOR_WHITE}» '
 
-# replace with desired environment
-export VAULT_ADDR=https://vault.preprod.polysign.io
+function precmd {
+  PROMPT="${COLOR_HOSTNAME}%m ${COLOR_GREEN}:: ${COLOR_DIR}%~ ${COLOR_GIT}$(parse_git_branch)${NEWLINE}${COLOR_WHITE}» "
+  export PROMPT
+}
 
-# Startup
-MY_INFRA_PATH=~/coding/infrastructure
-nodeVersion="$(node --version)"
-npmVersion="$(npm --version)"
+###### Startup ######
 eval "$(ssh-agent -s)" > /dev/null
 
 echo "Hello, Alex"
-echo "Using Node Version:" "${nodeVersion}"
-echo "Using NPM Version: " "${npmVersion}"
+# Uncomment below for version information on shell startup. This may significantly slow down startup.
+#nodeVersion="$(node --version)"
+#npmVersion="$(npm --version)"
+#echo "Using Node Version:" "${nodeVersion}"
+#echo "Using NPM Version: " "${npmVersion}"
 
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-echo "Using Python Version: $(python --version)"
+#echo "Using Python Version: $(python --version)"
+
+# Profiling zsh plugins - End of File
+#zprof
