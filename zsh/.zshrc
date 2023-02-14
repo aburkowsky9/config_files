@@ -8,6 +8,9 @@ export DEFAULT_PATH=$PATH
 # 1st in $PATH should be homebrew's java followed by location of homebrew's bin & sbin
 export PATH=/usr/local/opt/openjdk/bin:/usr/local/bin:/usr/local/sbin
 
+# Add psql to path
+export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
+
 # Include desired python instance in path - add back in if pyenv removed
 # export PATH=${PATH}:/usr/local/opt/python/libexec/bin
 
@@ -31,6 +34,11 @@ export PATH=${PATH}:./node_modules/.bin:~/.npm-global/bin
 
 # JAVA
 export JAVA_HOME=$(/usr/libexec/java_home)
+
+# psql
+export LDFLAGS="-L/usr/local/opt/postgresql@15/lib"
+export CPPFLAGS="-I/usr/local/opt/postgresql@15/include"
+export PKG_CONFIG_PATH="/usr/local/opt/postgresql@15/lib/pkgconfig"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/alexburkowsky/.oh-my-zsh"
@@ -182,6 +190,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 #echo "Using Python Version: $(python --version)"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
 # Profiling zsh plugins - End of File
 #zprof
