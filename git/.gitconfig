@@ -2,6 +2,9 @@
     name = Alex Burkowsky
     email = aburkowsky9@gmail.com
 
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
+
 [core]
     editor = vim # Use your preferred editor here
 
