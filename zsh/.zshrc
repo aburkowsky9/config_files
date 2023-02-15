@@ -40,6 +40,9 @@ export LDFLAGS="-L/usr/local/opt/postgresql@15/lib"
 export CPPFLAGS="-I/usr/local/opt/postgresql@15/include"
 export PKG_CONFIG_PATH="/usr/local/opt/postgresql@15/lib/pkgconfig"
 
+# aws
+export AWS_DEFAULT_PROFILE="eksadmin"
+
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/alexburkowsky/.oh-my-zsh"
 
@@ -197,3 +200,4 @@ eval "$(pyenv init -)"
 
 # Profiling zsh plugins - End of File
 #zprof
+
