@@ -27,9 +27,9 @@ export PATH=${PATH}:~/coding/scripts
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
 export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOPATH:$GOROOT/bin
+export PATH=$GOPATH:$GOROOT/bin:$PATH
 
-# LAST add local node_modules to path followed by global node_modules
+# Add local node_modules to path followed by global node_modules
 export PATH=${PATH}:./node_modules/.bin:~/.npm-global/bin
 
 # JAVA
@@ -198,6 +198,10 @@ eval "$(pyenv init -)"
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
+# pnpm
+export PNPM_HOME="/Users/alexburkowsky/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
 # Profiling zsh plugins - End of File
 #zprof
-

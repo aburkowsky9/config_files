@@ -38,16 +38,18 @@
     verbosity = 3
 
 [alias]
+    ac = !git add -A && git commit -m
+    br = branch
+    co = checkout
     hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    listalias = config --get-regexp alias
+    m = merge main
+    ps = push
+    pu = pull
     # shows each changed file with each log commit
     lg = log --color --pretty=short
+    r = rebase main
     s = status
-    co = checkout
-    br = branch
-    pu = push
-    pushu = push -u origin HEAD
-    listalias = config --get-regexp alias
-    ac = !git add -A && git commit -m
 
 [pull]
     rebase = false
