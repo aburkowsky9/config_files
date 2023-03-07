@@ -26,7 +26,7 @@ export PATH=${PATH}:~/.local/bin
 export PATH=${PATH}:${DEFAULT_PATH}
 
 # Next add personal scripts to path
-export PATH=${PATH}:~/coding/scripts
+export PATH=${PATH}:~/scripts
 
 # Add golang to path
 export GOPATH=$HOME/go
@@ -35,7 +35,7 @@ export GOBIN=$GOPATH/bin
 export PATH=$GOPATH:$GOROOT/bin:$PATH
 
 # JAVA
-export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=$(/usr/libexec/java_home)
 
 # psql
 export LDFLAGS="-L/usr/local/opt/postgresql@15/lib"
@@ -46,7 +46,7 @@ export PKG_CONFIG_PATH="/usr/local/opt/postgresql@15/lib/pkgconfig"
 export AWS_DEFAULT_PROFILE="eksadmin"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/alexburkowsky/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # zsh-nvm plugin options
 export NVM_DIR=~/.nvm
@@ -123,7 +123,8 @@ ZSH_THEME=""
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-nvm jsontools copyfile zsh-autosuggestions)
+plugins=(jsontools copyfile zsh-autosuggestions)
+# If not using pnpm - include zsh-nvm
 
 source $ZSH/oh-my-zsh.sh
 set ZSH_AUTOSUGGEST_MANUAL_REBIND
