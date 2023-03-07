@@ -1,12 +1,17 @@
 # Profiling zsh plugins - Start of File
 #zmodload zsh/zprof
 
-# If you come from bash you might have to change your $PATH.
+# Eval Homebrew for Mac Chip
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Set default $PATH to a variable
 export DEFAULT_PATH=$PATH
 
-# 1st in $PATH should be homebrew's java followed by location of homebrew's bin & sbin
-export PATH=/usr/local/opt/openjdk/bin:/usr/local/bin:/usr/local/sbin
+# 1st Add local node_modules to path followed by global node_modules
+export PATH=./node_modules/.bin:~/.npm-global/bin:$PATH
+
+# Add  in $PATH should be homebrew's java followed by location of homebrew's bin & sbin
+export PATH=${PATH}:/usr/local/opt/openjdk/bin:/usr/local/bin:/usr/local/sbin
 
 # Add psql to path
 export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
@@ -28,9 +33,6 @@ export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
 export GOBIN=$GOPATH/bin
 export PATH=$GOPATH:$GOROOT/bin:$PATH
-
-# Add local node_modules to path followed by global node_modules
-export PATH=${PATH}:./node_modules/.bin:~/.npm-global/bin
 
 # JAVA
 export JAVA_HOME=$(/usr/libexec/java_home)
