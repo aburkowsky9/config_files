@@ -203,8 +203,11 @@ eval "$(pyenv init -)"
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
 # pnpm
-export PNPM_HOME="/Users/alexburkowsky/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+export PNPM_HOME="/Users/alex.burkowsky/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 # pnpm end
 
 # Profiling zsh plugins - End of File

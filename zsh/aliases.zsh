@@ -3,7 +3,7 @@ alias zshconfig="vim ~/.zshrc"
 alias zshalias="vim ~/.oh-my-zsh/custom/aliases.zsh"
 alias reload="source ~/.zshrc"
 # To fix brew doctor's warning ""config" scripts exist outside your system or Homebrew directories"
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+#alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 alias brewconfig="vim ~/config_files/brew/Brewfile"
 #commands
 alias mv='mv -i'
