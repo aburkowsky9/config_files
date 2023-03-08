@@ -3,6 +3,7 @@
 
 # Eval Homebrew for Mac Chip
 eval "$(/opt/homebrew/bin/brew shellenv)"
+BREW_PATH="/opt/homebrew"
 
 # Set default $PATH to a variable
 export DEFAULT_PATH=$PATH
@@ -10,11 +11,11 @@ export DEFAULT_PATH=$PATH
 # 1st Add local node_modules to path followed by global node_modules
 export PATH=./node_modules/.bin:~/.npm-global/bin:$PATH
 
-# Add  in $PATH should be homebrew's java followed by location of homebrew's bin & sbin
-export PATH=${PATH}:/usr/local/opt/openjdk/bin:/usr/local/bin:/usr/local/sbin
+# Add  in location of homebrew's bin & sbin
+export PATH=${PATH}:"$BREW_PATH/bin:/usr/local/bin:/usr/local/sbin"
 
 # Add psql to path
-export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
+export PATH="$BREW_PATH/opt/postgresql@15/bin:$PATH"
 
 # Include desired python instance in path - add back in if pyenv removed
 # export PATH=${PATH}:/usr/local/opt/python/libexec/bin
@@ -30,7 +31,7 @@ export PATH=${PATH}:~/scripts
 
 # Add golang to path
 export GOPATH=$HOME/go
-export GOROOT=/usr/local/go
+export GOROOT=$BREW_PATH/opt/go/libexec
 export GOBIN=$GOPATH/bin
 export PATH=$GOPATH:$GOROOT/bin:$PATH
 
