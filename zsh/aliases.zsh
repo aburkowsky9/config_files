@@ -24,9 +24,11 @@ alias get_permissions="stat -f '%A %a %N'"
 #alias docker_rm_all="docker rm $(docker ps -aq)"
 #alias docker_rmi_all="docker rmi $(docker images -q)"
 alias start_docker="open -a Docker"
+alias k="kubectl"
 
 # Repo Shortcuts
 alias frontend="code ~/coding/accomp-frontend"
+alias mobile="code ~/coding/engage-mobile"
 alias backend="code ~/coding/ah-messaging"
 alias infra="code ~/coding/infrastructure"
 

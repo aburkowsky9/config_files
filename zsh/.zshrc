@@ -50,10 +50,10 @@ export AWS_DEFAULT_PROFILE="eksadmin"
 export ZSH="$HOME/.oh-my-zsh"
 
 # zsh-nvm plugin options
-export NVM_DIR=~/.nvm
- [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+# export NVM_DIR=~/.nvm
+#  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-export NVM_LAZY_LOAD=true
+# export NVM_LAZY_LOAD=true
 
 # Debug git slowness
 # export GIT_TRACE=1
@@ -124,8 +124,8 @@ ZSH_THEME=""
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(jsontools copyfile zsh-autosuggestions)
 # If not using pnpm - include zsh-nvm
+plugins=(jsontools copyfile zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 set ZSH_AUTOSUGGEST_MANUAL_REBIND
@@ -187,11 +187,12 @@ function precmd {
 eval "$(ssh-agent -s)" > /dev/null
 
 echo "Hello, Alex"
-# Uncomment below for version information on shell startup. This may significantly slow down startup.
-#nodeVersion="$(node --version)"
-#npmVersion="$(npm --version)"
-#echo "Using Node Version:" "${nodeVersion}"
-#echo "Using NPM Version: " "${npmVersion}"
+function getVersions {
+  echo "Node: $(node --version)"
+  echo "NPM: $(npm --version)"
+  echo "Go: $(go version)"
+  echo "Python: $(python --version)"
+}
 
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -200,6 +201,7 @@ eval "$(pyenv init -)"
 
 # tabtab source for packages
 # uninstall by removing these lines
+# shellcheck source=.config/tabtab/zsh/__tabtab.zsh
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
 # pnpm
@@ -210,5 +212,22 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# aws
+unset AWS_DEFAULT_PROFILE
+unset AWS_ACCESS_KEY_ID
+unset AWS_SESSION_TOKEN
+unset AWS_SECRET_ACCESS_KEY
+export AWS_DEFAULT_PROFILE=dev
+
+aws sts get-caller-identity &> /dev/null
+if [ $? -eq 0 ]; then
+    echo "AWS SSO Session Active"
+else
+    echo "AWS SSO Session Inactive - Logging in..."
+    aws sso login
+fi
+
+CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain accompany-health --domain-owner 715608841595 --region us-east-1 --query authorizationToken --output text)
+export CODEARTIFACT_AUTH_TOKEN
 # Profiling zsh plugins - End of File
 #zprof
