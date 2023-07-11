@@ -220,15 +220,23 @@ unset AWS_SESSION_TOKEN
 unset AWS_SECRET_ACCESS_KEY
 export AWS_DEFAULT_PROFILE=dev
 
-aws sts get-caller-identity &> /dev/null
-if [ $? -eq 0 ]; then
+function set_aws {
+  timeout 10s aws sts get-caller-identity &> /dev/null
+  AWS_EXIT_CODE=$?
+  if [ $AWS_EXIT_CODE -eq 0 ]; then
     echo "AWS SSO Session Active"
-else
+  elif [ $AWS_EXIT_CODE -eq 124 ]; then
+    echo "AWS SSO Session Timeout Error"
+    return 1
+  else
     echo "AWS SSO Session Inactive - Logging in..."
     aws sso login
-fi
+  fi
 
-CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain accompany-health --domain-owner 715608841595 --region us-east-1 --query authorizationToken --output text)
-export CODEARTIFACT_AUTH_TOKEN
+  CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain accompany-health --domain-owner 715608841595 --region us-east-1 --query authorizationToken --output text)
+  export CODEARTIFACT_AUTH_TOKEN
+  echo "Set CodeArtifact Token"
+}
+
 # Profiling zsh plugins - End of File
 #zprof
