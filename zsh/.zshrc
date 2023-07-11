@@ -185,8 +185,9 @@ function precmd {
 
 ###### Startup ######
 eval "$(ssh-agent -s)" > /dev/null
-
+eval $(thefuck --alias)
 echo "Hello, Alex"
+
 function getVersions {
   echo "Node: $(node --version)"
   echo "NPM: $(npm --version)"
