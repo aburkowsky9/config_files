@@ -14,6 +14,10 @@ export PATH=./node_modules/.bin:~/.npm-global/bin:$PATH
 # Add  in location of homebrew's bin & sbin
 export PATH=${PATH}:"$BREW_PATH/bin:/usr/local/bin:/usr/local/sbin"
 
+# Coreutils commands also provided by macOS and the commands dir, dircolors, vdir have been installed with the prefix "g".
+# If you need to use these commands with their normal names, you can add a "gnubin" directory to your PATH with
+export PATH="$BREW_PATH/opt/coreutils/libexec/gnubin:$PATH"
+
 # Add psql to path
 export PATH="$BREW_PATH/opt/postgresql@15/bin:$PATH"
 
@@ -218,11 +222,12 @@ unset AWS_DEFAULT_PROFILE
 unset AWS_ACCESS_KEY_ID
 unset AWS_SESSION_TOKEN
 unset AWS_SECRET_ACCESS_KEY
-export AWS_DEFAULT_PROFILE=dev
+export AWS_DEFAULT_PROFILE=DevDeveloper
 
 function set_aws {
   timeout 10s aws sts get-caller-identity &> /dev/null
   AWS_EXIT_CODE=$?
+  echo "AWS_EXIT_CODE: $AWS_EXIT_CODE"
   if [ $AWS_EXIT_CODE -eq 0 ]; then
     echo "AWS SSO Session Active"
   elif [ $AWS_EXIT_CODE -eq 124 ]; then

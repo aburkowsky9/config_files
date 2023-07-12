@@ -1,6 +1,7 @@
 brew "amazon-ecs-cli"
 brew "awscli"
 brew "cocoapods"
+brew "coreutils"
 brew "eksctl"
 brew "git"
 brew "go"
