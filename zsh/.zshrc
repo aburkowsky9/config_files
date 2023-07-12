@@ -209,6 +209,10 @@ eval "$(pyenv init -)"
 # shellcheck source=.config/tabtab/zsh/__tabtab.zsh
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
+if command -v ngrok &>/dev/null; then
+  eval "$(ngrok completion)"
+fi
+
 # pnpm
 export PNPM_HOME="/Users/alex.burkowsky/Library/pnpm"
 case ":$PATH:" in
