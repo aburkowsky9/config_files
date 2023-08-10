@@ -247,5 +247,6 @@ function set_aws {
   echo "Set CodeArtifact Token"
 }
 
+export KUBE_EDITOR="vim"
 # Profiling zsh plugins - End of File
 #zprof
