@@ -1,3 +1,4 @@
+brew "act"
 brew "amazon-ecs-cli"
 brew "awscli"
 brew "cocoapods"
