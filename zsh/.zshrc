@@ -1,43 +1,50 @@
 # Profiling zsh plugins - Start of File
 #zmodload zsh/zprof
 
-# Eval Homebrew for Mac Chip
-eval "$(/opt/homebrew/bin/brew shellenv)"
-BREW_PATH="/opt/homebrew"
+##### $PATH SETUP START #####
 
 # Set default $PATH to a variable
+# Eval Homebrew for Mac Chip
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export DEFAULT_PATH=$PATH
 
-# 1st Add local node_modules to path followed by global node_modules
-export PATH=./node_modules/.bin:~/.npm-global/bin:$PATH
+# pnpm
+export PNPM_HOME="/Users/alex.burkowsky/Library/pnpm"
+PATH="$PNPM_HOME"
 
-# Add  in location of homebrew's bin & sbin
-export PATH=${PATH}:"$BREW_PATH/bin:/usr/local/bin:/usr/local/sbin"
-
-# Coreutils commands also provided by macOS and the commands dir, dircolors, vdir have been installed with the prefix "g".
-# If you need to use these commands with their normal names, you can add a "gnubin" directory to your PATH with
-export PATH="$BREW_PATH/opt/coreutils/libexec/gnubin:$PATH"
-
-# Add psql to path
-export PATH="$BREW_PATH/opt/postgresql@15/bin:$PATH"
-
-# Include desired python instance in path - add back in if pyenv removed
-# export PATH=${PATH}:/usr/local/opt/python/libexec/bin
-
-# Add pipenv packages
-export PATH=${PATH}:~/.local/bin
-
-# Add back default path by appending to tail
-export PATH=${PATH}:${DEFAULT_PATH}
-
-# Next add personal scripts to path
-export PATH=${PATH}:~/scripts
-
-# Add golang to path
+# golang
 export GOPATH=$HOME/go
 export GOROOT=$BREW_PATH/opt/go/libexec
 export GOBIN=$GOPATH/bin
-export PATH=$GOPATH:$GOROOT/bin:$PATH
+PATH=$PATH:$GOPATH:$GOROOT/bin
+
+# Add local node_modules to path followed by global node_modules
+PATH=$PATH:./node_modules/.bin:~/.npm-global/bin
+
+# Brew
+BREW_PATH="/opt/homebrew"
+# Add psql to path
+PATH="$PATH:$BREW_PATH/opt/postgresql@15/bin"
+# Coreutils commands also provided by macOS and the commands dir, dircolors, vdir have been installed with the prefix "g".
+# If you need to use these commands with their normal names, you can add a "gnubin" directory to your PATH with
+PATH="$PATH:$BREW_PATH/opt/coreutils/libexec/gnubin"
+# Add  in location of homebrew's bin & sbin
+PATH="$PATH:$DEFAULT_PATH:/usr/local/sbin"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || PATH="$PATH:$PYENV_ROOT/bin"
+eval "$(pyenv init -)"
+# Include desired python instance in path - add back in if pyenv removed
+#PATH=$PATH:/usr/local/opt/python/libexec/bin
+# Add pipenv packages
+PATH=$PATH:~/.local/bin
+
+# Next add personal scripts to path
+PATH=${PATH}:~/scripts
+
+export PATH
+##### $PATH SETUP END #####
 
 # JAVA
 # export JAVA_HOME=$(/usr/libexec/java_home)
@@ -199,9 +206,6 @@ function getVersions {
   echo "Python: $(python --version)"
 }
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 #echo "Using Python Version: $(python --version)"
 
 # tabtab source for packages
@@ -212,14 +216,6 @@ eval "$(pyenv init -)"
 if command -v ngrok &>/dev/null; then
   eval "$(ngrok completion)"
 fi
-
-# pnpm
-export PNPM_HOME="/Users/alex.burkowsky/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
 # aws
 unset AWS_DEFAULT_PROFILE
