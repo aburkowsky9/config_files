@@ -7,6 +7,7 @@
 # Eval Homebrew for Mac Chip
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export DEFAULT_PATH=$PATH
+BREW_PATH="/opt/homebrew"
 
 # pnpm
 export PNPM_HOME="/Users/alex.burkowsky/Library/pnpm"
@@ -22,7 +23,6 @@ PATH=$PATH:$GOPATH:$GOROOT/bin
 PATH=$PATH:./node_modules/.bin:~/.npm-global/bin
 
 # Brew
-BREW_PATH="/opt/homebrew"
 # Add psql to path
 PATH="$PATH:$BREW_PATH/opt/postgresql@15/bin"
 # Coreutils commands also provided by macOS and the commands dir, dircolors, vdir have been installed with the prefix "g".
