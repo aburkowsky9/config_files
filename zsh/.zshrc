@@ -207,19 +207,17 @@ function getVersions {
   echo "Node: $(node --version)"
   echo "NPM: $(npm --version)"
   echo "Go: $(go version)"
-  echo "Python: $(python --version)"
+  echo "Python: $(python3 --version)"
 }
-
-#echo "Using Python Version: $(python --version)"
 
 # tabtab source for packages
 # uninstall by removing these lines
 # shellcheck source=.config/tabtab/zsh/__tabtab.zsh
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
-if command -v ngrok &>/dev/null; then
-  eval "$(ngrok completion)"
-fi
+# if command -v ngrok &>/dev/null; then
+#   eval "$(ngrok completion)"
+# fi
 
 # aws
 unset AWS_DEFAULT_PROFILE
