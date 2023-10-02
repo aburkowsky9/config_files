@@ -9,22 +9,24 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export DEFAULT_PATH=$PATH
 BREW_PATH="/opt/homebrew"
 
-# pnpm
-export PNPM_HOME="/Users/alex.burkowsky/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+# Include desired python instance in path - add back in if pyenv removed
+#PATH=$PATH:/usr/local/opt/python/libexec/bin
+# Add pipenv packages
+PATH=~/.local/bin:$PATH
+
+# Add local node_modules to path followed by global node_modules
+PATH=./node_modules/.bin:~/.npm-global/bin:$PATH
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || PATH="$PATH:$PYENV_ROOT/bin"
+eval "$(pyenv init -)"
 
 # golang
 export GOPATH=$HOME/go
 export GOROOT=$BREW_PATH/opt/go/libexec
 export GOBIN=$GOPATH/bin
-PATH=$PATH:$GOPATH:$GOROOT/bin
-
-# Add local node_modules to path followed by global node_modules
-PATH=$PATH:./node_modules/.bin:~/.npm-global/bin
+PATH=$GOPATH:$GOROOT/bin:$PATH
 
 # Brew
 # Add psql to path
@@ -33,16 +35,12 @@ PATH="$PATH:$BREW_PATH/opt/postgresql@15/bin"
 # If you need to use these commands with their normal names, you can add a "gnubin" directory to your PATH with
 PATH="$PATH:$BREW_PATH/opt/coreutils/libexec/gnubin"
 # Add  in location of homebrew's bin & sbin
-PATH="$PATH:$DEFAULT_PATH:/usr/local/sbin"
+PATH="$PATH:/usr/local/sbin"
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || PATH="$PATH:$PYENV_ROOT/bin"
-eval "$(pyenv init -)"
-# Include desired python instance in path - add back in if pyenv removed
-#PATH=$PATH:/usr/local/opt/python/libexec/bin
-# Add pipenv packages
-PATH=$PATH:~/.local/bin
+# pnpm
+export PNPM_HOME="/Users/alex.burkowsky/Library/pnpm"
+PATH="$PNPM_HOME:$PATH"
+# pnpm end
 
 # Next add personal scripts to path
 PATH=${PATH}:~/scripts
