@@ -39,7 +39,10 @@ PATH="$PATH:/usr/local/sbin"
 
 # pnpm
 export PNPM_HOME="/Users/alex.burkowsky/Library/pnpm"
-PATH="$PNPM_HOME:$PATH"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 # pnpm end
 
 # Next add personal scripts to path
