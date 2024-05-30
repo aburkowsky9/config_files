@@ -34,6 +34,7 @@ alias infra="code ~/coding/infrastructure"
 alias environments="code ~/coding/environments"
 alias mizar="code ~/coding/Mizar"
 alias mercury="code ~/coding/mercury"
+alias localproxy="code ~/coding/ah-localproxy"
 
 #IntelliJ Debugging
 alias enable_debug='export SBT_OPTS="-Xms512m -Xmx2048M -XX:MaxMetaspaceSize=512m -XX:NewRatio=2 -XX:+UseParallelGC -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"'
