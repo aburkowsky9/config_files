@@ -26,7 +26,7 @@ eval "$(pyenv init -)"
 export GOPATH=$HOME/go
 export GOROOT=$BREW_PATH/opt/go/libexec
 export GOBIN=$GOPATH/bin
-PATH=$GOPATH:$GOROOT/bin:$PATH
+PATH=$GOPATH:$GOBIN:$GOROOT/bin:$PATH
 
 # Brew
 # Add psql to path
