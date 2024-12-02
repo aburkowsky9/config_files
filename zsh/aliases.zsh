@@ -12,7 +12,7 @@ alias rm='rm -i'
 alias df='df -h'
 alias du='du -h'
 alias mkdir='mkdir -p'
-alias delbrs='git for-each-ref --format "%(refname:short)" refs/heads | grep -v "main\|master" | xargs git branch -D'
+alias delbrs='git for-each-ref --format "%(refname:short)" refs/heads | grep -v "main\|master\|alex" | xargs git branch -D'
 alias hsh='HUSKY=0'
 alias git='hsh git'
 alias nginx-conf="vim /usr/local/etc/nginx/nginx.conf"
@@ -35,6 +35,7 @@ alias environments="code ~/coding/environments"
 alias mizar="code ~/coding/Mizar"
 alias mercury="code ~/coding/mercury"
 alias localproxy="code ~/coding/ah-localproxy"
+alias poseidon="code ~/coding/poseidon"
 
 #IntelliJ Debugging
 alias enable_debug='export SBT_OPTS="-Xms512m -Xmx2048M -XX:MaxMetaspaceSize=512m -XX:NewRatio=2 -XX:+UseParallelGC -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"'
