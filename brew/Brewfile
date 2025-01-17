@@ -33,3 +33,5 @@ brew "tree"
 tap "twilio/brew"
 brew "twilio"
 brew "watchman"
+brew "zoxide"
+
