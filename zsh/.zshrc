@@ -247,6 +247,7 @@ function set_aws {
 }
 
 export KUBE_EDITOR="vim"
+source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 
 # Profiling zsh plugins - End of File
