@@ -28,6 +28,9 @@ export GOROOT=$BREW_PATH/opt/go/libexec
 export GOBIN=$GOPATH/bin
 PATH=$GOPATH:$GOBIN:$GOROOT/bin:$PATH
 
+# ruby
+#export GEM_HOME="$HOME/.gem"
+
 # Brew
 # Add psql to path
 PATH="$PATH:$BREW_PATH/opt/postgresql@15/bin"
@@ -143,6 +146,7 @@ ZSH_THEME=""
 # If not using pnpm - include zsh-nvm
 plugins=(jsontools copyfile zsh-autosuggestions)
 
+ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
 set ZSH_AUTOSUGGEST_MANUAL_REBIND
 ZSH_AUTOSUGGEST_COMPLETION_IGNORE="gti *"
@@ -253,3 +257,12 @@ eval "$(zoxide init zsh)"
 # Profiling zsh plugins - End of File
 #zprof
 
+
+# Added by Windsurf
+export PATH="/Users/alex.burkowsky/.codeium/windsurf/bin:$PATH"
+
+# Ruby
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+chruby ruby-3.4.7
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
