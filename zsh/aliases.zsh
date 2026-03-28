@@ -29,6 +29,7 @@ alias k="kubectl"
 
 # Repo Shortcuts
 alias frontend="windsurf ~/coding/accomp-frontend"
+alias aquila="windsurf ~/coding/aquila"
 alias mobile="windsurf ~/coding/ah-mob-phoenix"
 alias backend="windsurf ~/coding/ah-messaging"
 alias infra="windsurf ~/coding/infrastructure"
@@ -38,6 +39,7 @@ alias mercury="windsurf ~/coding/mercury"
 alias localproxy="windsurf ~/coding/ah-localproxy"
 alias poseidon="windsurf ~/coding/poseidon"
 alias vela="windsurf ~/coding/vela"
+alias hydra="windsurf ~/coding/hydra"
 
 #IntelliJ Debugging
 alias enable_debug='export SBT_OPTS="-Xms512m -Xmx2048M -XX:MaxMetaspaceSize=512m -XX:NewRatio=2 -XX:+UseParallelGC -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"'

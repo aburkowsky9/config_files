@@ -181,7 +181,7 @@ fi
 code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$*" ;}
 
 # SBT
-ulimit -S -n 4096 #fix for SBT can sometimes reach MacOS's maximum file handle limit
+ulimit -S -n 65536 #fix for SBT can sometimes reach MacOS's maximum file handle limit
 export SBT_OPTS="-XX:MaxMetaspaceSize=1g -Xmx2024m -Xss2m" #fix for various out of memory errors using sbt
 
 # Shell Prompt
